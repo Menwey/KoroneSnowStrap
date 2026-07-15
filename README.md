@@ -25,7 +25,6 @@
 ---
 
 ## ⭐ Features
-- **The Blizzard Engine:** Crisp, frosty-white minimalist UI designed for ultimate clarity and speed.
 - **Native FPS Unlock:** 265 FPS limit injected by default.
 - **FastFlags GUI:** Comprehensive management of client settings without manual JSON editing.
 - **Font & Cursor Mirroring:** Replace game assets with a single click—automatic 64x64 rescaling for cursors.
