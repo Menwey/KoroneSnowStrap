@@ -31,10 +31,10 @@ LOGO_URL = "https://github.com/Menwey/KoroneSnowStrap/blob/main/assets/imazge.pn
 ICON_URL = "https://raw.githubusercontent.com/Menwey/KoroneSnowStrap/refs/heads/main/assets/image.ico"
 
 THEMES = {
-    "Void": {"bg": "#000000", "surface": "#080808", "border": "#121212", "accent": "#ffffff", "text": "#e0e0e0", "muted": "#444444", "active_text": "#000000"},
+    "Snow": {"bg": "#2e3440", "surface": "#3b4252", "border": "#4c566a", "accent": "#88c0d0", "text": "#eceff4", "muted": "#616e88", "active_text": "#2e3440"},
     "Cyberpunk": {"bg": "#000505", "surface": "#001a1a", "border": "#00f2ff", "accent": "#00f2ff", "text": "#00f2ff", "muted": "#006666", "active_text": "#000000"},
     "Crimson": {"bg": "#0d0000", "surface": "#1a0000", "border": "#ff0000", "accent": "#ff3333", "text": "#ffe0e0", "muted": "#660000", "active_text": "#ffffff"},
-    "Nord": {"bg": "#2e3440", "surface": "#3b4252", "border": "#4c566a", "accent": "#88c0d0", "text": "#eceff4", "muted": "#616e88", "active_text": "#2e3440"},
+    "Void": {"bg": "#000000", "surface": "#080808", "border": "#121212", "accent": "#ffffff", "text": "#e0e0e0", "muted": "#444444", "active_text": "#000000"},
     "Sakura": {"bg": "#1a1012", "surface": "#2d1b1e", "border": "#4a2c31", "accent": "#ffb7c5", "text": "#ffeef0", "muted": "#855a62", "active_text": "#1a1012"},
     "Oceanic": {"bg": "#011627", "surface": "#0b2942", "border": "#1d3b53", "accent": "#2ec4b6", "text": "#fdfffc", "muted": "#5f7e97", "active_text": "#011627"},
     "Midnight Gold": {"bg": "#0a0a0a", "surface": "#141414", "border": "#262626", "accent": "#d4af37", "text": "#ffffff", "muted": "#555555", "active_text": "#000000"},
@@ -55,7 +55,7 @@ class ClientLoader(tk.Toplevel):
 
         if logo: tk.Label(self, image=logo, bg="#000000").pack(pady=(30, 10))
         
-        tk.Label(self, text="STARTING VOID CLIENT", font=("Consolas", 12, "bold"), fg="white", bg="#000000").pack()
+        tk.Label(self, text="STARTING Ыт CLIENT", font=("Consolas", 12, "bold"), fg="white", bg="#000000").pack()
         self.status = tk.Label(self, text="Preparing session...", font=("Consolas", 9), fg=theme["accent"], bg="#000000")
         self.status.pack(pady=15)
 
@@ -117,7 +117,7 @@ class KoroneSnowStrap(tk.Tk):
         self.title("KoroneSnowStrap")
         self.geometry("880x500")
         self.resizable(False, False)
-        self.theme = THEMES["Void"]
+        self.theme = THEMES["Snow"]
 
         self.f_main = font.Font(family="Consolas", size=10)
         self.f_lg   = font.Font(family="Consolas", size=13, weight="bold")
@@ -208,7 +208,7 @@ class BasePage(tk.Frame):
 class LaunchPage(BasePage):
     def on_show(self):
         for w in self.winfo_children(): w.destroy()
-        self._title("Launch", "Ascend into the Void")
+        self._title("Launch")
         
         container = tk.Frame(self, bg=self.app.theme["bg"])
         container.pack(fill=tk.X, padx=24)
