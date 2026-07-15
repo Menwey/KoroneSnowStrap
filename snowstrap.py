@@ -19,7 +19,7 @@ try:
 except ImportError:
     HAS_PIL = False
 
-VERSION = "1.1-STABLE"
+VERSION = "1.0-STABLE"
 FASTFLAGS_FILE  = "fastFlags.json"
 PEKORA_VERSION_HASH = "version-cde8fee1a1e747d4"
 PEKORA_2020L_FOLDER  = "2020L"
@@ -27,8 +27,8 @@ PEKORA_2021M_FOLDER  = "2021M"
 PEKORA_FONTS_SUBPATH = os.path.join("content", "fonts")
 PEKORA_TEXT_SUBPATH  = os.path.join("content", "textures")
 
-LOGO_URL = "https://github.com/vmdx1337/KoroneVoidStrap/blob/main/assets/imazge.png?raw=true"
-ICON_URL = "https://raw.githubusercontent.com/vmdx1337/KoroneVoidStrap/refs/heads/main/assets/image.ico"
+LOGO_URL = "https://github.com/Menwey/KoroneSnowStrap/blob/main/assets/imazge.png?raw=true"
+ICON_URL = "https://raw.githubusercontent.com/Menwey/KoroneSnowStrap/refs/heads/main/assets/image.ico"
 
 THEMES = {
     "Void": {"bg": "#000000", "surface": "#080808", "border": "#121212", "accent": "#ffffff", "text": "#e0e0e0", "muted": "#444444", "active_text": "#000000"},
@@ -111,10 +111,10 @@ def apply_fastflags(ff):
                 with open(os.path.join(cd, "ClientAppSettings.json"), "w") as f: json.dump(ff, f, indent=2)
     return True
 
-class KoroneVoidStrap(tk.Tk):
+class KoroneSnowStrap(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("KoroneVoidStrap")
+        self.title("KoroneSnowStrap")
         self.geometry("880x500")
         self.resizable(False, False)
         self.theme = THEMES["Void"]
@@ -398,8 +398,8 @@ class CreditsPage(BasePage):
         for w in self.winfo_children(): w.destroy()
         self._title("Credits", f"Running version {VERSION}")
         c = tk.Frame(self, bg=self.app.theme["surface"], padx=20, pady=20); c.pack(fill=tk.X, padx=24)
-        tk.Label(c, text="VMDX1337 - Lead Developer\nPonuss - UI Design", font=self.app.f_lg, fg=self.app.theme["accent"], bg=self.app.theme["surface"]).pack(anchor="w")
-        tk.Label(self, text="github.com/vmdx1337/KoroneVoidStrap", font=self.app.f_sm, fg=self.app.theme["muted"], bg=self.app.theme["bg"]).pack(side=tk.BOTTOM, pady=20)
+        tk.Label(c, text="Menwey - Dev\nPonuss - UI Design\nBased on Korone VoidStrap by vmdx1337", font=self.app.f_lg, fg=self.app.theme["accent"], bg=self.app.theme["surface"]).pack(anchor="w")
+        tk.Label(self, text="github.com/menwey/KoroneSnowStrap", font=self.app.f_sm, fg=self.app.theme["muted"], bg=self.app.theme["bg"]).pack(side=tk.BOTTOM, pady=20)
 
 if __name__ == "__main__":
-    KoroneVoidStrap().mainloop()
+    KoroneSnowStrap().mainloop()
