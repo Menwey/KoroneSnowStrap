@@ -47,30 +47,51 @@ class ClientLoader(tk.Toplevel):
         super().__init__(parent)
         self.overrideredirect(True)
         self.attributes("-topmost", True)
-        self.configure(bg="#2e3440")
-        
+        self.bg_color = theme["bg"]
+        self.accent_color = theme["accent"]
+        self.configure(bg=self.bg_color)
         w, h = 420, 280
         sw, sh = self.winfo_screenwidth(), self.winfo_screenheight()
         self.geometry(f"{w}x{h}+{(sw-w)//2}+{(sh-h)//2}")
-
-        if logo: tk.Label(self, image=logo, bg="#000000").pack(pady=(30, 10))
-        
-        tk.Label(self, text="Starting client", font=("Consolas", 12, "bold"), fg="white", bg="#eceff4").pack()
-        self.status = tk.Label(self, text="Preparing session...", font=("Consolas", 9), fg=theme["accent"], bg="#88c0d0")
-        self.status.pack(pady=15)
-
-        self.progress = tk.Canvas(self, width=320, height=3, bg="#4c566a", highlightthickness=0)
-        self.progress.pack()
-        self.bar = self.progress.create_rectangle(-100, 0, 0, 3, fill=theme["accent"], outline="")
-        
+        if logo: 
+            tk.Label(self, image=logo, bg=self.bg_color).pack(pady=(40, 15))
+        tk.Label(
+            self, 
+            text="STARTING CLIENT", 
+            font=("Consolas", 14, "bold"), 
+            fg=theme["text"], 
+            bg=self.bg_color
+        ).pack()
+        self.status = tk.Label(
+            self, 
+            text="Preparing session...", 
+            font=("Consolas", 10), 
+            fg=theme["muted"], 
+            bg=self.bg_color
+        )
+        self.status.pack(pady=(10, 25))
+        self.progress = tk.Canvas(
+            self, 
+            width=300, 
+            height=4, 
+            bg=theme["surface"], 
+            highlightthickness=0
+        )
+        self.progress.pack() 
+        self.bar = self.progress.create_rectangle(
+            -100, 0, 0, 4, 
+            fill=self.accent_color, 
+            outline=""
+        )
         self.pos = -100
         self.animate()
 
     def animate(self):
-        self.pos += 5
-        if self.pos > 320: self.pos = -100
-        self.progress.coords(self.bar, self.pos, 0, self.pos + 100, 3)
-        self.after(15, self.animate)
+        self.pos += 4
+        if self.pos > 300:
+            self.pos = -100
+        self.progress.coords(self.bar, self.pos, 0, self.pos + 100, 4)
+        self.after(16, self.animate)
 
 def download_resource(url, filename):
     path = os.path.join(tempfile.gettempdir(), filename)
@@ -226,7 +247,8 @@ class LaunchPage(BasePage):
         paths = get_executable_paths(fld)
         exe = next((p for p in paths if os.path.isfile(p)), None)
         if not exe: 
-            messagebox.showerror("Error", "Client not found!"); return
+            messagebox.showerror("Error", "Client not found!")
+            return
         
         loader = ClientLoader(self.app, self.app.logo_img, self.app.theme)
         
@@ -255,7 +277,8 @@ class FastFlagsPage(BasePage):
     def on_show(self):
         for w in self.winfo_children(): w.destroy()
         self._title("FastFlags")
-        bar = tk.Frame(self, bg=self.app.theme["bg"]); bar.pack(fill=tk.X, padx=24, pady=10)
+        bar = tk.Frame(self, bg=self.app.theme["bg"])
+        bar.pack(fill=tk.X, padx=24, pady=10)
         self._btn(bar, "+ Add Flag", self._add).pack(side=tk.LEFT)
         
         style = ttk.Style()
@@ -264,7 +287,8 @@ class FastFlagsPage(BasePage):
         style.map("Treeview", background=[('selected', self.app.theme["accent"])])
 
         self.tree = ttk.Treeview(self, columns=("K", "V"), show="headings", height=12)
-        self.tree.heading("K", text="Flag Name"); self.tree.heading("V", text="Value")
+        self.tree.heading("K", text="Flag Name")
+        self.tree.heading("V", text="Value")
         self.tree.pack(fill=tk.BOTH, expand=True, padx=24, pady=10)
         
         ff = load_fastflags()
@@ -274,7 +298,9 @@ class FastFlagsPage(BasePage):
         k = simpledialog.askstring("Add", "Flag Key:")
         v = simpledialog.askstring("Add", "Value:")
         if k:
-            ff = load_fastflags(); ff[k] = v; save_fastflags(ff)
+            ff = load_fastflags()
+            ff[k] = v
+            save_fastflags(ff)
             self.on_show()
 
 class EditFontPage(BasePage):
@@ -322,7 +348,8 @@ class EditFontPage(BasePage):
         
         dest_dir = self._get_font_dest()
         if not dest_dir:
-            messagebox.showerror("Error", "Version directory not found!"); return
+            messagebox.showerror("Error", "Version directory not found!")
+            return
 
         try:
             count = 0
@@ -376,14 +403,16 @@ class EditCursorPage(BasePage):
 
     def _do_cursor_replace(self):
         if not HAS_PIL:
-            messagebox.showerror("Error", "Pillow required!"); return
+            messagebox.showerror("Error", "Pillow required!")
+            return
             
         img_path = filedialog.askopenfilename(filetypes=[("Images", "*.png *.jpg *.jpeg")])
         if not img_path: return
 
         cursor_dir = self._get_cursor_dest()
         if not cursor_dir:
-            messagebox.showerror("Error", "Cursor folder not found!"); return
+            messagebox.showerror("Error", "Cursor folder not found!")
+            return
 
         try:
             img = Image.open(img_path).resize((64, 64), Image.Resampling.LANCZOS)
@@ -397,7 +426,8 @@ class CreditsPage(BasePage):
     def on_show(self):
         for w in self.winfo_children(): w.destroy()
         self._title("Credits", f"Running version {VERSION}")
-        c = tk.Frame(self, bg=self.app.theme["surface"], padx=20, pady=20); c.pack(fill=tk.X, padx=24)
+        c = tk.Frame(self, bg=self.app.theme["surface"], padx=20, pady=20)
+        c.pack(fill=tk.X, padx=24)
         tk.Label(c, text="Menwey - Dev\nPonuss - UI Design\nBased on Korone VoidStrap by vmdx1337", font=self.app.f_lg, fg=self.app.theme["accent"], bg=self.app.theme["surface"]).pack(anchor="w")
         tk.Label(self, text="github.com/menwey/KoroneSnowStrap", font=self.app.f_sm, fg=self.app.theme["muted"], bg=self.app.theme["bg"]).pack(side=tk.BOTTOM, pady=20)
 
