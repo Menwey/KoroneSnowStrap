@@ -44,7 +44,7 @@
 ### For Users (Recommended)
 Just download and run the **KoroneSnowStrap.exe** from the [Releases](https://github.com/Menwey/KoroneSnowStrap/releases) section. No setup required.
 
-### For Developers / Manual Run
+### For Linux users / Manual Run
 - **Python 3.11**
 - **Pillow (PIL):** Essential for asset management and UI rendering.
   ```bash
