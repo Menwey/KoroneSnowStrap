@@ -47,7 +47,7 @@ class ClientLoader(tk.Toplevel):
         super().__init__(parent)
         self.overrideredirect(True)
         self.attributes("-topmost", True)
-        self.configure(bg="#000000")
+        self.configure(bg="#2e3440")
         
         w, h = 420, 280
         sw, sh = self.winfo_screenwidth(), self.winfo_screenheight()
@@ -59,7 +59,7 @@ class ClientLoader(tk.Toplevel):
         self.status = tk.Label(self, text="Preparing session...", font=("Consolas", 9), fg=theme["accent"], bg="#000000")
         self.status.pack(pady=15)
 
-        self.progress = tk.Canvas(self, width=320, height=3, bg="#2e3440", highlightthickness=0)
+        self.progress = tk.Canvas(self, width=320, height=3, bg="#4c566a", highlightthickness=0)
         self.progress.pack()
         self.bar = self.progress.create_rectangle(-100, 0, 0, 3, fill=theme["accent"], outline="")
         
