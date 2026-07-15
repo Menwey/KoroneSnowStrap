@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="128" height="128" alt="KoroneSnowStrap Logo" src="https://github.com/Menwey/KoroneSnowStrap/blob/main/assets/image.png?raw=true" />
+  <img width="128" height="128" alt="KoroneSnowStrap Logo" src="https://github.com/Menwey/KoroneSnowStrap/blob/main/assets/imazge.png?raw=true" />
 </p>
 <h1 align="center">KoroneSnowStrap</h1>
 
