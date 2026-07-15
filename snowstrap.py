@@ -55,8 +55,8 @@ class ClientLoader(tk.Toplevel):
 
         if logo: tk.Label(self, image=logo, bg="#000000").pack(pady=(30, 10))
         
-        tk.Label(self, text="Starting client", font=("Consolas", 12, "bold"), fg="white", bg="#000000").pack()
-        self.status = tk.Label(self, text="Preparing session...", font=("Consolas", 9), fg=theme["accent"], bg="#000000")
+        tk.Label(self, text="Starting client", font=("Consolas", 12, "bold"), fg="white", bg="#eceff4").pack()
+        self.status = tk.Label(self, text="Preparing session...", font=("Consolas", 9), fg=theme["accent"], bg="#88c0d0")
         self.status.pack(pady=15)
 
         self.progress = tk.Canvas(self, width=320, height=3, bg="#4c566a", highlightthickness=0)
