@@ -9,12 +9,12 @@
 
 <p align="center">
   <a href="#">
-    <img src="https://img.shields.io/badge/Version-v1-89cff0?style=flat-square" alt="Latest Release">
+    <img src="https://img.shields.io/badge/Version-v1.1-89cff0?style=flat-square" alt="Latest Release">
   </a>
   <a href="#">
     <img src="https://img.shields.io/badge/Platform-Windows_%2B_Linux-3b82f6?style=flat-square" alt="Platforms">
   </a>
-  <img src="https://img.shields.io/badge/FPS_Unlock-265_Default-0ea5e9?style=flat-square" alt="FPS Unlock">
+  <img src="https://img.shields.io/badge/FPS_Unlocked-120_Default-0ea5e9?style=flat-square" alt="FPS Unlock">
 </p>
 
 ---
@@ -25,8 +25,8 @@
 ---
 
 ## ⭐ Features
-- **Native FPS Unlock:** 265 FPS limit injected by default.
-- **FastFlags GUI:** Comprehensive management of client settings without manual JSON editing.
+- **Native FPS Unlock:** 120 FPS limit injected by default.
+- **FastFlags GUI & Raw JSON Editor:** Manage client settings and FPS limits through an intuitive interface or edit raw JSON directly within the app.
 - **Font & Cursor Mirroring:** Replace game assets with a single click—automatic 64x64 rescaling for cursors.
 - **Multi-Version Support:** Seamlessly switch between 2020L and 2021M clients.
 
@@ -47,5 +47,6 @@ Just download and run the **KoroneSnowStrap.exe** from the [Releases](https://gi
 ### Manual Run / linux users (but linux support not finished yet)
 - **Python 3.11**
 - **Pillow (PIL):** Essential for asset management and UI rendering.
+- **pypresence:** Essential Discord RPC.
   ```bash
-  pip install Pillow
+  pip install Pillow pypresence
