@@ -2,5 +2,5 @@
   "_comment": "Edit this file to control badges per user. Key = pekora.zip user ID (string). Values = array of badge types.",
   "_valid_badges": ["owner", "developer", "admin", "staff", "featured", "beta", "hexium"],
   "266": ["owner", "developer", "hexium"],
-  "123456": ["beta", "hexium"]
+  "50233": ["beta"]
 }
